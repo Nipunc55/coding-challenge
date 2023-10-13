@@ -1,5 +1,15 @@
 /** @format */
+/* Write a function that takes an object as an argument 
+and returns the number of properties present in the object. */
+/**
+ *
+ * @param {object} obj
+ * @returns {number}
+ */
+function countProperties(obj) {
+	_count = 0;
+	_count = Object.keys(obj).length;
+	return _count;
+}
 
-const getMaxValue = require('./task-1');
-
-console.log(getMaxValue([1, 2, 3, 5]));
+module.exports = countProperties;
