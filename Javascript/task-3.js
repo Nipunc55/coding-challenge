@@ -1,30 +1,56 @@
-/** @format */
+/**
+ * Given a string s and an integer k, reverse the first k characters for every 2k characters
+ *  counting from the start of the string.
+ *
+ * If there are fewer than k characters left, reverse all of them. If there are less than 2k
+ * but * greater than or equal to k characters, then reverse the first k characters
+ *  and leave the other as original.
+ *
+ * @format
+ */
 
-const arr = [3, 1, 4, 1, 5, 9, 2, 6, 7, 5, 3, 5];
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+var reverseStr = function (s, k) {
+	let _array = s.split('');
+	let _limit = 2 * k;
+	const _length = _array.length;
 
-// Sorting numbers
-const sortedNumbers = arr
-	.sort((a, b) => a - b)
-	.filter((value, index, array) => array.indexOf(value) === index);
+	if (2 * k >= _length) {
+		let newS = s;
+		newS =
+			s.split('').slice(0, k).reverse().join('') +
+			s.split('').slice(k, _length).join('');
 
-// .map((i, pos) => ({ val: i, pos: pos }))
-// .sort((a, b) => a.val - b.val || a.pos - b.pos)
-// .slice(-(arr.length - 5))
-// .sort((a, b) => a.pos - b.pos)
-// .map((i) => i.val);
-// console.log(find_total(arr));
-function find_total(my_numbers) {
-	let _score = 0;
-
-	my_numbers.forEach((number) => {
-		// if(number%2==0)_score +1;
-		// if(number %2==1 && number != 5)_score+3;
-		if (number == 5) _score = _score + 1;
-	});
-	return _score;
-}
-const fetchData = () =>
-	new Promise((r) => setTimeout(() => r(Date.now()), 100));
-
-const data = fetchData().then((value) => console.log(value));
-console.log(data.toString());
+		return newS;
+	} else {
+		if (2 * k == _length) _limit = 2 * k;
+		else {
+			let _count = Math.ceil(_length / (2 * k));
+			_limit = _count * k;
+			let newS = s;
+			for (let index = 0; index < _count; index++) {
+				newS =
+					newS
+						.split('')
+						.slice(0, 2 * k * index)
+						.join('') +
+					s
+						.split('')
+						.slice(2 * k * index, k * (2 * index + 1))
+						.reverse()
+						.join('') +
+					s
+						.split('')
+						.slice(k * (2 * index + 1), _length)
+						.join('');
+			}
+			return newS;
+		}
+	}
+};
+console.log(reverseStr('abcdefg', 2));
+// console.log('abcdefg'.slice(0, 2).split(''));
