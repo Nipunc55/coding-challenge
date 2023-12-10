@@ -17,11 +17,11 @@ const productExceptSelf = function (nums) {
 		answer[i] *= suffixProduct;
 		suffixProduct *= nums[i];
 	}
-	console.log(answer);
+	// console.log(answer);
 	return answer;
 };
 
 // Example usage:
 const nums = [1, 2, 3, 4];
-productExceptSelf(nums);
-console.log(); // Output: [24,12,8,6]
+// productExceptSelf(nums);
+console.log(nums.filter((number) => number >= 2)); // Output: [24,12,8,6]

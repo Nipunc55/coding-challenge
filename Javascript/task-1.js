@@ -19,5 +19,18 @@ function getMaxValue(array) {
 
 	return _maxvalue;
 }
+//without using Math operators
+/**
+ *
+ * @param {number[]} array
+ * @returns {number}
+ */
+function maxValue(array) {
+	let maxValue = array[0];
+	for (let index = 0; index < array.length; index++) {
+		maxValue = maxValue < array[index] ? array[index] : maxValue;
+	}
+	return maxValue;
+}
 
 module.exports = getMaxValue;

@@ -33,5 +33,5 @@ data = { error: true, message: 'amount is requred' };
 x('1', { ...data, user_id: 'nipun' });
 function x(string, obj) {
 	const { error, message, user_id } = obj;
-	console.log(string, error, message, user_id);
+	console.log(obj);
 }
